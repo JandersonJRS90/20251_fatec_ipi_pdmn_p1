@@ -9,7 +9,7 @@ const LocalidadeLista = (props) => {
         cep={cep.cep} 
         logradouro={cep.logradouro} 
         bairro={cep.bairro} 
-        localidadeUF={`${cep.estado} - ${cep.uf}`} />
+        localidadeUF={`${cep.localidade} - ${cep.uf}`} />
     ))
   )
 }

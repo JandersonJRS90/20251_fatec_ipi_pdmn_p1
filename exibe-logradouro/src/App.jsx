@@ -2,14 +2,12 @@ import React from 'react'
 import Busca from './Componentes/Busca'
 import LocalidadeLista from './Componentes/LocalidadeLista'
 import axios from 'axios';
+import GraficoPizza from './Componentes/GraficoPizza';
 
 class App extends React.Component {
   state = {
     resultCEP: []
   }
-  addItem = (newItem) => {
-    
-  };
   onBuscaRealizada = async (cep) => {
     cep = cep.replace(/\D/g, '');
     if(cep != ""){
@@ -46,6 +44,9 @@ class App extends React.Component {
           <div className="col-12">
             <LocalidadeLista dds={this.state.resultCEP} />
           </div>
+        </div>
+        <div className="col-6 grid justify-content-center">
+          <GraficoPizza dds={this.state.resultCEP} />
         </div>
       </div>
     )
