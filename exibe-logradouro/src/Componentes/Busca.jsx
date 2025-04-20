@@ -14,13 +14,13 @@ export default class Busca extends Component {
 
   onFormSubmit = (event) => {
     event.preventDefault()
-    alert(this.state.cepDeBusca)
+    this.props.onBuscaRealizada(this.state.cepDeBusca)
   }
 
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
-        <div className='flex flex-column m-2 p-2 mt-4'>
+        <div className='flex flex-column m-2 mt-4'>
             <IconField iconPosition="left">
             <InputIcon className="pi pi-search"> </InputIcon>
             <InputText
