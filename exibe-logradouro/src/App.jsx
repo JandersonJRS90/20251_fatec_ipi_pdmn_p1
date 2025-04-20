@@ -4,17 +4,26 @@ import LocalidadeLista from './Componentes/LocalidadeLista'
 import axios from 'axios';
 
 class App extends React.Component {
-
+  state = {
+    resultCEP: []
+  }
+  addItem = (newItem) => {
+    
+  };
   onBuscaRealizada = async (cep) => {
     cep = cep.replace(/\D/g, '');
     if(cep != ""){
       const validacep = /^[0-9]{8}$/;
       if(validacep.test(cep)){
         //alert(cep)
-        try {
+        try{
           const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-          console.log(response.data);
-        } catch (error) {
+          //console.log(response.data)
+          //this.setState({resultCEP: this.state.resultCEP.push(response.data)});
+          this.setState((prevState) => ({
+            resultCEP: [response.data, ...prevState.resultCEP]
+          }));
+        }catch(error){
           console.error('Erro encontrado:', error);
         }
       }
@@ -35,7 +44,7 @@ class App extends React.Component {
             onBuscaRealizada={this.onBuscaRealizada} />
           </div>
           <div className="col-12">
-            <LocalidadeLista />
+            <LocalidadeLista dds={this.state.resultCEP} />
           </div>
         </div>
       </div>

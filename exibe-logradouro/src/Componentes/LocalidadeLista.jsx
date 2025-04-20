@@ -1,20 +1,16 @@
 import React from 'react'
 import ItemLista from './ItemLista';
 
-const LocalidadeLista = () => {
+const LocalidadeLista = (props) => {
   return (
-    <div>
+    props.dds.map((cep, i) => (
       <ItemLista
-        cep="040094-050"
-        logradouro="Avenida Pedro Álvares Cabral"
-        bairro="Parque Ibirapuera"
-        localidadeUF="São Paulo - SP" />
-      <ItemLista
-        cep="55592-970"
-        logradouro="Rua dos Navegantes"
-        bairro="Vila de Porto de Galinhas"
-        localidadeUF="Ipojuca - PE" />
-    </div>
+        key={i} 
+        cep={cep.cep} 
+        logradouro={cep.logradouro} 
+        bairro={cep.bairro} 
+        localidadeUF={`${cep.estado} - ${cep.uf}`} />
+    ))
   )
 }
 
